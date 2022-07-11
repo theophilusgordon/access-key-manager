@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h5 {
+  display: flex;
+  justify-content: space-between;
+  margin-inline: 10%;
+  font-size: clamp(1rem, 0.5rem + 1vw, 2rem);
+  color: #f2f2f2;
+  align-items: center;
+  margin-block: 1rem;
+  background-color: #26c2ae;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 3rem;
+  color: #00474b;
+}

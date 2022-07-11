@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 10%;
+  height: 15vh;
+  align-items: center;
+}
+
+header {
+  font-size: 3rem;
+  color: #f2f2f2;
+  background-color: #318075;
+}
+
+h3 {
+  font-size: 2rem;
+  text-align: center;
+}
