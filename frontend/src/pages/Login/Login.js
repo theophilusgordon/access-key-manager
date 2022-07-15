@@ -43,7 +43,8 @@ const Login = () => {
         );
         if (response) {
           localStorage.setItem("auth", response.data.token);
-          console.log(response.data.token);
+          localStorage.setItem("username", response.data.name);
+          localStorage.setItem("isAdmin", response.data.isAdmin);
           navigate("/dashboard");
         }
       } catch (error) {
@@ -57,7 +58,7 @@ const Login = () => {
   return (
     <main>
       {displayGetOtp && <GetOtp handleClose={handleClose} />}
-      <section>
+      <section style={displayGetOtp ? { opacity: "0.25" } : { opacity: "1" }}>
         <article>
           <FaKey />
           <h1>Welcome Back!</h1>

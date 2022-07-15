@@ -42,6 +42,9 @@ const Register = () => {
           userData
         );
         if (response) {
+          localStorage.setItem("auth", response.data.token);
+          localStorage.setItem("username", response.data.name);
+          localStorage.setItem("isAdmin", response.data.isAdmin);
           navigate("/dashboard");
         }
       } catch (error) {
@@ -98,8 +101,8 @@ const Register = () => {
           />
           <input
             type="password"
-            name="password"
-            id="password"
+            name="confirmPassword"
+            id="confirmPassword"
             placeholder="Password"
             onChange={handleChange}
             value={confirmPassword}

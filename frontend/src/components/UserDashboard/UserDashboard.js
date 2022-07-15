@@ -7,6 +7,7 @@ import "./UserDashboard.module.css";
 
 const UserDashboard = () => {
   const [showPurchaseForm, setShowPurchaseForm] = useState(false);
+  const isAdmin = localStorage.getItem("isAdmin");
 
   const handleClose = () => {
     setShowPurchaseForm(false);
@@ -15,11 +16,18 @@ const UserDashboard = () => {
   return (
     <>
       {showPurchaseForm && <PurchaseForm handleClose={handleClose} />}
-      <Header />
-      <span onClick={() => setShowPurchaseForm(true)}>
-        <FaMoneyBillAlt /> Purchase Access Key
-      </span>
-      <AccessKeys />
+      <div style={showPurchaseForm ? { opacity: "0.25" } : { opacity: "1" }}>
+        <Header />
+        <span
+          style={
+            isAdmin === "true" ? { display: "hidden" } : { display: "block" }
+          }
+          onClick={() => setShowPurchaseForm(true)}
+        >
+          <FaMoneyBillAlt /> Purchase Access Key
+        </span>
+        <AccessKeys />
+      </div>
     </>
   );
 };

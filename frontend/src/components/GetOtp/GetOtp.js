@@ -53,7 +53,7 @@ const GetOtp = ({ handleClose }) => {
         <h1>
           <FaSpinner /> Get OTP <FaWindowClose onClick={handleClose} />
         </h1>
-        <p>Enter your email to get OTP</p>
+        <p>Enter your email to get a code to change your password</p>
         <input
           type="email"
           name="email"

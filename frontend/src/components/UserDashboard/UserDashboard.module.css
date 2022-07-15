@@ -12,6 +12,10 @@ div {
   flex-direction: column;
 }
 
+body {
+  background-color: #5f9ea0;
+}
+
 span {
   background-color: #00474b;
   color: #26c2ae;

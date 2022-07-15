@@ -48,7 +48,7 @@ const createAccessKey = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc: Get Access Key For An User
+// @desc: Get Access Key For A User
 // @route: GET /api/keys/key
 // @access: Private
 const userAccessKeys = asyncHandler(async (req, res) => {
@@ -65,7 +65,7 @@ const userAccessKeys = asyncHandler(async (req, res) => {
 // @route: GET /api/keys/key
 // @access: Private
 const getAllAccessKeys = asyncHandler(async (req, res) => {
-  // Send all access keys to client
+  // Send all access keys to admin
   const accessKeys = await AccessKey.find();
   res.status(200).json(accessKeys);
 });
@@ -90,7 +90,6 @@ const getUserAccessKey = asyncHandler(async (req, res) => {
     );
   }
 
-  // TODO: Change implementation to use token to access keys
   const key = await AccessKey.find({
     condition: "Active",
     "author.email": req.body.email,

@@ -10,15 +10,38 @@ header {
   padding-inline: 10%;
   height: 15vh;
   align-items: center;
-}
-
-header {
   font-size: 3rem;
   color: #f2f2f2;
   background-color: #318075;
 }
 
-h3 {
-  font-size: 2rem;
+header h5 {
+  width: 10rem;
+  margin-right: 0;
+  background-color: #318075;
+  color: #26c2ae;
+  transition: 0.5s ease-out;
+}
+
+header h5:hover {
+  cursor: pointer;
+  background-color: #26c2ae;
+  color: #318075;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  justify-self: flex-start;
+}
+
+h3,
+h6 {
+  font-size: 1.5rem;
   text-align: center;
+}
+
+h6 {
+  color: #26c2ae;
 }

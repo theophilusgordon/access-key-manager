@@ -90,6 +90,7 @@ article button {
 }
 
 article button:hover {
+  cursor: pointer;
   background-color: #00474b;
   color: white;
 }
@@ -103,6 +104,7 @@ form button {
 }
 
 form button:hover {
+  cursor: pointer;
   background-color: #f2f2f2;
   color: #00474b;
 }

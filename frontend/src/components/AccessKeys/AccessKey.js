@@ -1,22 +1,23 @@
 import { FaRegCreditCard } from "react-icons/fa";
 import "./AccessKey.module.css";
+import moment from "moment";
 
-const AccessKey = ({ accesskey }) => {
+const AccessKey = ({ keys }) => {
   return (
     <h5>
       <FaRegCreditCard style={{ fontSize: "3rem", color: "#00474B" }} />
-      <p>{accesskey}</p>
+      <p>{keys.key}</p>
       <p>
         <p>Status:</p>
-        <p>{accesskey.condition}</p>
+        <p>{keys.condition}</p>
       </p>
       <p>
         <p>Date of Procurement:</p>
-        <p>{accesskey.procurementDate}</p>
+        <p>{moment(keys.procurementDate).format("MMM Do, yyyy")}</p>
       </p>
       <p>
         <p>Date of Expiry:</p>
-        <p>{accesskey.expiryDate}</p>
+        <p>{moment(keys.expiryDate).format("MMMM Do, yyyy")}</p>
       </p>
     </h5>
   );

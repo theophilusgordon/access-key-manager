@@ -15,17 +15,28 @@ const Header = () => {
     }
   };
 
+  let username = localStorage.getItem("username");
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("auth");
+    localStorage.removeItem("username");
+    localStorage.removeItem("isAdmin");
     navigate("/");
   };
 
   return (
     <header>
       <FaUniversalAccess />
-      <h3>{greet() ? `${greet()}` : "Hello"}</h3>
-      <FaSignOutAlt onClick={handleLogout} />
+      <article>
+        <h6>{greet() ? `${greet()},` : "Hello,"}</h6>
+        <h3>{username.split(" ")[0]}</h3>
+      </article>
+      <h5 onClick={handleLogout}>
+        Log Out
+        <FaSignOutAlt />
+      </h5>
     </header>
   );
 };

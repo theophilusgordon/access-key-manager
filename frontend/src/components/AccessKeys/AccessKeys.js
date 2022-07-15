@@ -6,32 +6,37 @@ import { useNavigate } from "react-router-dom";
 import "./AccessKey.module.css";
 
 const AccessKeys = () => {
-  const [accessKeys, setAccessKeys] = useState([]);
+  const initialValue = [];
+  const [accessKeys, setAccessKeys] = useState(initialValue);
   const navigate = useNavigate();
 
   useEffect(() => {
     const getAccessKeys = async () => {
       try {
-        let token = localStorage.getItem("auth");
-        console.log(token);
+        const token = localStorage.getItem("auth");
+        const isAdmin = localStorage.getItem("isAdmin");
+
+        const adminCheck = isAdmin === "true" ? "admin" : "user";
+
         const response = await axios.get(
-          "http://localhost:5000/api/keys/user",
+          `http://localhost:5000/api/keys/${adminCheck}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log(response.data);
-        setAccessKeys(response.data);
 
-        console.log(accessKeys);
+        const data = response.data;
+        setAccessKeys(data);
       } catch (error) {
+        localStorage.removeItem("auth");
+        localStorage.removeItem("username");
+        localStorage.removeItem("isAdmin");
         navigate("/");
         toast.error(error.response.data.message);
       }
     };
-
     getAccessKeys();
   }, [navigate, accessKeys]);
 
@@ -40,7 +45,7 @@ const AccessKeys = () => {
       {accessKeys.length > 0 ? (
         <main>
           {accessKeys.map((accessKey) => (
-            <AccessKey key={accessKey._id} acesskey={accessKey} />
+            <AccessKey key={accessKey._id} keys={accessKey} />
           ))}
         </main>
       ) : (
