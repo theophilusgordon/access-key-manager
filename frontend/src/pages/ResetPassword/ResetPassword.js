@@ -44,7 +44,7 @@ const ResetPassword = () => {
         );
 
         if (response) {
-          navigate("/login");
+          navigate("/");
         }
       } catch (error) {
         toast.error(error.response.data.message);
@@ -86,8 +86,8 @@ const ResetPassword = () => {
         />
         <input
           type="password"
-          name="password"
-          id="password"
+          name="confirmPassword"
+          id="confirmPassword"
           placeholder="Password"
           onChange={handleChange}
           value={confirmPassword}

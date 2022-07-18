@@ -21,6 +21,7 @@ header h5 {
   background-color: #318075;
   color: #26c2ae;
   transition: 0.5s ease-out;
+  border-left: none;
 }
 
 header h5:hover {

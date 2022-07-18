@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { FaSpinner, FaWindowClose } from "react-icons/fa";
@@ -15,8 +14,6 @@ const PurchaseForm = ({ handleClose }) => {
 
   const { number, holderName, ccv, expiry } = formData;
 
-  const navigate = useNavigate();
-
   const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -27,15 +24,22 @@ const PurchaseForm = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem("auth");
+
     const postData = async () => {
       try {
         const response = await axios.post(
           "http://localhost:5000/api/keys/create",
-          formData
+          formData,
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
         );
 
         if (response) {
-          navigate("/dashboard");
+          handleClose();
         }
       } catch (error) {
         toast.error(error.response.data.message);

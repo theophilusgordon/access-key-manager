@@ -14,6 +14,7 @@ aside {
   z-index: 2;
   transform: translate(-50%, -50%);
   width: 50%;
+  min-width: 375px;
 }
 
 aside p {

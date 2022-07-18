@@ -13,6 +13,18 @@ const createAccessKey = asyncHandler(async (req, res) => {
     throw new Error("Please add all fields");
   }
 
+  // Find active access key from the author
+  const activeKey = await AccessKey.find({
+    "author.email": req.user.email,
+    condition: "Active",
+  });
+
+  // Deny access to purchase new access key if active key is found
+  if (activeKey) {
+    res.sendStatus(400);
+    throw new Error("User already has an active access key");
+  }
+
   // Generate AccessKey
   function generateKey() {
     let result = "";
@@ -28,6 +40,7 @@ const createAccessKey = asyncHandler(async (req, res) => {
   const key = generateKey();
 
   // Create Access Key
+  // FIXME: Resolve Bad Request Error
   const accessKey = await AccessKey.create({
     key,
     author: {
@@ -49,7 +62,7 @@ const createAccessKey = asyncHandler(async (req, res) => {
 });
 
 // @desc: Get Access Key For A User
-// @route: GET /api/keys/key
+// @route: GET /api/keys/user
 // @access: Private
 const userAccessKeys = asyncHandler(async (req, res) => {
   if (!req.user._id) {

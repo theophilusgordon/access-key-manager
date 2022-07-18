@@ -18,14 +18,15 @@ const UserDashboard = () => {
       {showPurchaseForm && <PurchaseForm handleClose={handleClose} />}
       <div style={showPurchaseForm ? { opacity: "0.25" } : { opacity: "1" }}>
         <Header />
-        <span
-          style={
-            isAdmin === "true" ? { display: "hidden" } : { display: "block" }
-          }
-          onClick={() => setShowPurchaseForm(true)}
-        >
-          <FaMoneyBillAlt /> Purchase Access Key
-        </span>
+        {isAdmin === "false" ? (
+          <span onClick={() => setShowPurchaseForm(true)}>
+            <FaMoneyBillAlt /> Purchase Access Key
+          </span>
+        ) : (
+          <span>
+            {/* //TODO: Make an input field filters active key belonging to the user that will be entered and display them below */}
+          </span>
+        )}
         <AccessKeys />
       </div>
     </>
