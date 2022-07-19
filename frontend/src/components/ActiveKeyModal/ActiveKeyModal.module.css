@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+pre {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem 4rem;
+  background-color: #00474b;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 2;
+}
+
+pre h2 {
+  color: #26c2ae;
+  margin-left: auto;
+}
+
+pre p:nth-child(2) {
+  color: #f2f2f2;
+  font-weight: bold;
+}
+pre h2:hover {
+  cursor: pointer;
+}

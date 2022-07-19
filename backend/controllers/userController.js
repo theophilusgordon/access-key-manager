@@ -199,9 +199,13 @@ const updateUserPassword = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   // Change Password
-  const user = await User.updateOne({
-    password: hashedPassword,
-  });
+  const user = await User.findOneAndUpdate(
+    { email: req.body.email },
+    {
+      password: hashedPassword,
+    },
+    { new: true }
+  );
 
   if (user) {
     res.status(201).json({

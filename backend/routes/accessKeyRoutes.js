@@ -13,6 +13,6 @@ router.post("/create", protect, createAccessKey);
 router.get("/user", protect, userAccessKeys);
 router.patch("/:id", [protect, adminProtect], revokeAccessKey);
 router.get("/admin", [protect, adminProtect], getAllAccessKeys);
-router.get("/:id", [protect, adminProtect], getUserAccessKey);
+router.get("/:email", [protect, adminProtect], getUserAccessKey);
 
 module.exports = router;

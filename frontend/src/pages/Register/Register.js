@@ -35,9 +35,9 @@ const Register = () => {
       password,
     };
 
-    const postData = () => {
+    const postData = async () => {
       try {
-        const response = axios.post(
+        const response = await axios.post(
           "http://localhost:5000/api/users/register",
           userData
         );

@@ -15,13 +15,11 @@ const createAccessKey = asyncHandler(async (req, res) => {
 
   // Find active access key from the author
   const activeKey = await AccessKey.find({
-    "author.email": req.user.email,
-    condition: "Active",
+    $and: [{ condition: "Active" }, { "author.email": req.user.email }],
   });
-
   // Deny access to purchase new access key if active key is found
-  if (activeKey) {
-    res.sendStatus(400);
+  if (activeKey.length > 0) {
+    res.status(400);
     throw new Error("User already has an active access key");
   }
 
@@ -40,7 +38,6 @@ const createAccessKey = asyncHandler(async (req, res) => {
   const key = generateKey();
 
   // Create Access Key
-  // FIXME: Resolve Bad Request Error
   const accessKey = await AccessKey.create({
     key,
     author: {
@@ -84,17 +81,17 @@ const getAllAccessKeys = asyncHandler(async (req, res) => {
 });
 
 // @desc: Get Access Key For An Email
-// @route: GET /api/keys/key
+// @route: GET /api/keys/:email
 // @access: Private
 const getUserAccessKey = asyncHandler(async (req, res) => {
-  const { email } = req.body;
+  const { email } = req.params;
 
   if (!email) {
     res.status(400);
     throw new Error("Please provide an email to access Access Key");
   }
 
-  const emailExists = await User.findOne({ email });
+  const emailExists = await User.findOne({ "author.email": email });
 
   if (!emailExists) {
     res.status(400);
@@ -103,9 +100,9 @@ const getUserAccessKey = asyncHandler(async (req, res) => {
     );
   }
 
+  // Find active access key from the author
   const key = await AccessKey.find({
-    condition: "Active",
-    "author.email": req.body.email,
+    $and: [{ condition: "Active" }, { "author.email": req.params.email }],
   });
 
   if (!key) {
@@ -113,7 +110,7 @@ const getUserAccessKey = asyncHandler(async (req, res) => {
     throw new Error("User has no active key");
   }
 
-  res.status(200).json(keys);
+  res.status(200).json(key);
 });
 
 // @desc: Revoke User Access Key

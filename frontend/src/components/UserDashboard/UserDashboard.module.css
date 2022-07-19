@@ -37,3 +37,38 @@ span:hover {
   background-color: #26c2ae;
   color: #00474b;
 }
+
+nav {
+  margin: 1rem 10% 1rem auto;
+  width: 40%;
+  min-width: 350px;
+  padding: 0.5rem 2rem;
+  background-color: #00474b;
+  border-radius: 10px;
+}
+
+nav p {
+  color: #f2f2f2;
+  font-size: 1.5rem;
+}
+
+nav form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  background-color: #00474b;
+  padding: 0;
+}
+
+nav button {
+  font-size: 1.5rem;
+  color: #26c2ae;
+  transition: all 0.25s ease-out;
+  height: 2.5rem;
+  margin: 0;
+}
+
+nav button:hover {
+  color: #f2f2f2;
+}
