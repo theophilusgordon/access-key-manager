@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
+  let url = `ongodb+srv://microfocusinc:incfocusmicro@access-key-manager.bbxzh.mongodb.net/?retryWrites=true&w=majority`;
+
   try {
-    const connector = await mongoose.connect(process.env.MONGO_URI);
+    const connector = await mongoose.connect(url);
     console.log(`MongoDB Connected: ${connector.connection.host}`);
   } catch (error) {
     console.log(error);
