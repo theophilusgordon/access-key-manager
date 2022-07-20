@@ -56,7 +56,11 @@ const UserDashboard = () => {
           });
           const data = response.data;
           setActiveKey(data);
-          setShowActiveKeyModal(true);
+          if (data.length > 0) {
+            setShowActiveKeyModal(true);
+          } else {
+            toast.error("User has NO Active Access Keys");
+          }
         }
       } catch (error) {
         toast.error(error.response.data.message);
