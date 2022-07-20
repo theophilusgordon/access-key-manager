@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  let url = `ongodb+srv://microfocusinc:incfocusmicro@access-key-manager.bbxzh.mongodb.net/?retryWrites=true&w=majority`;
+  let url = `mongodb+srv://microfocusinc:incfocusmicro@access-key-manager.bbxzh.mongodb.net/?retryWrites=true&w=majority`;
 
   try {
     const connector = await mongoose.connect(url);
