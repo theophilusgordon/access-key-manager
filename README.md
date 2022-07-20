@@ -33,7 +33,7 @@ or login and purchase Access Keys that can be used to activate their school acco
 
 _Deployment Link:_
 
-<!-- <Not Yet Deployed> -->
+<https://access-key-manager.herokuapp.com/>
 
 ## Technologies
 
@@ -46,5 +46,5 @@ _Deployment Link:_
 ## Author
 
 - _Name:_ Theophilus Gordon
-- _GitHub:_ <https://github.com/gordontheophilus>
-- _Email:_ theophilus.gordon@amalitech.com
+- _GitHub:_ <https://github.com/theophilusgordon>
+- _Email:_ theophilusgordon@yahoo.com
