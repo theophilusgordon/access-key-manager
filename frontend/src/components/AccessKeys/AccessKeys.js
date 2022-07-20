@@ -20,7 +20,7 @@ const AccessKeys = () => {
 
         const baseUrl =
           process.env.NODE_ENV === "production"
-            ? "https://access-key-manager.herokuapp.com/"
+            ? "https://access-key-manager.herokuapp.com"
             : "http://localhost:5000";
 
         const response = await axios.get(`${baseUrl}/api/keys/${adminCheck}`, {

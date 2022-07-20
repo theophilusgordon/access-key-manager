@@ -12,7 +12,7 @@ const AccessKey = ({ keys }) => {
   const handleRevoke = async (e) => {
     const baseUrl =
       process.env.NODE_ENV === "production"
-        ? "https://access-key-manager.herokuapp.com/"
+        ? "https://access-key-manager.herokuapp.com"
         : "http://localhost:5000";
     try {
       const token = localStorage.getItem("auth");
