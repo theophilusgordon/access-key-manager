@@ -36,9 +36,13 @@ const Register = () => {
     };
 
     const postData = async () => {
+      const baseUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://access-key-manager.herokuapp.com/"
+          : "http://localhost:5000";
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/users/register",
+          `${baseUrl}/api/users/register`,
           userData
         );
         if (response) {

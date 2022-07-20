@@ -41,14 +41,15 @@ const UserDashboard = () => {
 
     const getData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/keys/${email}`,
-          {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const baseUrl =
+          process.env.NODE_ENV === "production"
+            ? "https://access-key-manager.herokuapp.com/"
+            : "http://localhost:5000";
+        const response = await axios.get(`${baseUrl}/api/keys/${email}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
 
         if (response) {
           setFormData({

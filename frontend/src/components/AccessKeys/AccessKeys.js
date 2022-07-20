@@ -4,6 +4,7 @@ import AccessKey from "./AccessKey";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "./AccessKey.module.css";
+import { base } from "../../../../backend/models/userModel";
 
 const AccessKeys = () => {
   const initialValue = [];
@@ -18,14 +19,16 @@ const AccessKeys = () => {
 
         const adminCheck = isAdmin === "true" ? "admin" : "user";
 
-        const response = await axios.get(
-          `http://localhost:5000/api/keys/${adminCheck}`,
-          {
-            headers: {
-              authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const baseUrl =
+          process.env.NODE_ENV === "production"
+            ? "https://access-key-manager.herokuapp.com/"
+            : "http://localhost:5000";
+
+        const response = await axios.get(`${baseUrl}/api/keys/${adminCheck}`, {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
 
         const data = response.data;
         setAccessKeys(data);

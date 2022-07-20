@@ -25,11 +25,12 @@ const GetOtp = ({ handleClose }) => {
     e.preventDefault();
 
     const postData = async () => {
+      const baseUrl =
+        process.env.NODE_ENV === "production"
+          ? "https://access-key-manager.herokuapp.com/"
+          : "http://localhost:5000";
       try {
-        const response = await axios.post(
-          "http://localhost:5000/api/users/otp",
-          formData
-        );
+        const response = await axios.post(`${baseUrl}/api/users/otp`, formData);
 
         if (email === "") {
           toast.error("Enter email to get OTP");

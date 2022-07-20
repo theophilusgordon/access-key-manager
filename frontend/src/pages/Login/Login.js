@@ -37,8 +37,12 @@ const Login = () => {
 
     const postData = async () => {
       try {
+        const baseUrl =
+          process.env.NODE_ENV === "production"
+            ? "https://access-key-manager.herokuapp.com/"
+            : "http://localhost:5000";
         const response = await axios.post(
-          "http://localhost:5000/api/users/login",
+          `${baseUrl}/api/users/login`,
           userData
         );
         if (response) {

@@ -10,10 +10,14 @@ const AccessKey = ({ keys }) => {
   const isAdmin = localStorage.getItem("isAdmin");
 
   const handleRevoke = async (e) => {
+    const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? "https://access-key-manager.herokuapp.com/"
+        : "http://localhost:5000";
     try {
       const token = localStorage.getItem("auth");
       await axios.patch(
-        `http://localhost:5000/api/keys/${e.currentTarget.id}`,
+        `${baseUrl}/api/keys/${e.currentTarget.id}`,
         { revoke: "Revoked" },
         {
           headers: {
