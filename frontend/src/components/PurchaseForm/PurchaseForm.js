@@ -44,6 +44,7 @@ const PurchaseForm = ({ handleClose }) => {
         );
 
         if (response) {
+          toast.success("Success! Access Key Purchased");
           handleClose();
         }
       } catch (error) {

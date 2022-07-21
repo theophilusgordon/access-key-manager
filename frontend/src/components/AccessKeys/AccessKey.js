@@ -26,7 +26,6 @@ const AccessKey = ({ keys }) => {
         }
       );
       toast.success("Access Key Revoked");
-      console.log(e.currentTarget.id);
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -38,6 +37,10 @@ const AccessKey = ({ keys }) => {
         style={{ fontSize: "3rem", color: "#00474B" } || <Skeleton />}
       />
       <p>{keys.key}</p>
+      <p>
+        <p>Email:</p>
+        <p>{keys.author.email || <Skeleton />}</p>
+      </p>
       <p>
         <p>Status:</p>
         <p>{keys.condition || <Skeleton />}</p>
